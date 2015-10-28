@@ -1,9 +1,44 @@
-# generator-modularjs [![Build Status](https://secure.travis-ci.org/javisperez/generator-modularjs.png?branch=master)](https://travis-ci.org/javisperez/generator-modularjs)
+# generator-modularjs
 
 > [Yeoman](http://yeoman.io) generator
 
 
-## Getting Started
+## About this generator
+
+### What's included?
+
+- AngularJS
+- Bower
+- Gulp
+- jQuery
+- Bootstrap / Bootstrap SASS
+- Angular UI (for bootstrap)
+- Toastr w/Angular wrapper
+- SugarJS
+- Font Awesome
+- Angular Loading Bar
+
+### How about coding style?
+
+We have included some rules for:
+
+- JSCS
+- jsHint
+- EditorConfig
+
+### How to use this generator?
+
+Short answer:
+
+```bash
+yo modularjs
+```
+
+It will then ask you the name of your appication and if you want to be able to run E2E tests and Unit tests
+
+If you say YES to that latest two questions, then the Gulp rules for E2E and Unit Testing in Angular will be added
+
+## About Yeoman
 
 ### What is Yeoman?
 
