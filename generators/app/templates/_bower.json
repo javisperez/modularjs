@@ -1,0 +1,35 @@
+{
+  "name": "<%= _.camelCase(appname) %>",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "~2.*",
+    "angular-animate": "~1.*",
+    "angular-touch": "~1.*",
+    "angular-cookies": "~1.*",
+    "angular-sanitize": "~1.*",
+    "angular-resource": "~1.*",
+    "angular-route": "~1.*",
+    "bootstrap-sass-official": "~3.*",
+    "angular-bootstrap": "*",
+    "angular": "~1.4.*",
+    "toastr": "*",
+    "angular-toastr": "*",
+    "font-awesome": "~4.4.x",
+    "sugar": "~1.4.1",
+    "angular-loading-bar": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.*"
+  },
+  "resolutions": {
+    "angular": "~1.4.*"
+  },
+  "overrides": {
+      "font-awesome": {
+        "main": [
+          "./css/font-awesome.css",
+          "./fonts/*"
+        ]
+      }
+  }
+}
