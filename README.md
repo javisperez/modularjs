@@ -1,21 +1,22 @@
-# generator-modularjs
+# ModularJS Generator for Yeoman
 
-> [Yeoman](http://yeoman.io) generator
+> An awesome [Yeoman](http://yeoman.io) generator
 
 
 ## About this generator
 
 ### What's included?
 
-- AngularJS
+- AngularJS (1.4.x)
 - Bower
 - Gulp
 - jQuery
-- Bootstrap / Bootstrap SASS
-- Angular UI (for bootstrap)
+- Bootstrap / Bootstrap SASS or Angular Material (you choose)
+- Angular UI (with bootstrap only)
+- Font Awesome (with bootstrap only)
+- Material Icons (with material only)
 - Toastr w/Angular wrapper
 - SugarJS
-- Font Awesome
 - Angular Loading Bar
 
 ### How about coding style?
@@ -34,9 +35,14 @@ Short answer:
 yo modularjs
 ```
 
-It will then ask you the name of your appication and if you want to be able to run E2E tests and Unit tests
+It will then ask you the name of your appication
 
-If you say YES to that latest two questions, then the Gulp rules for E2E and Unit Testing in Angular will be added
+Then it'll ask if you would like to use Bootstrap or Material as CSS framework
+
+Also, will ask if you want to be able to run E2E tests and/or Unit tests
+
+Please note: If you say YES to the latest two questions (E2E or Unit Tests), then the Gulp rules for E2E and Unit Testing in Angular will be added
+
 
 ## About Yeoman
 

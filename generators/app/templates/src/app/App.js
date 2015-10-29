@@ -9,7 +9,7 @@ angular.module('<%= _.camelCase(appname) %>', [
   'ngSanitize',
   'ngResource',
   'ngRoute',
-  'ui.bootstrap',
+  <% if (bootstrap) { %>'ui.bootstrap',<% } else { %>'ngMaterial',<% } %>
   'toastr',
   'angular-loading-bar',
 

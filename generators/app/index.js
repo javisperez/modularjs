@@ -3,7 +3,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var context = null
+var context = null;
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -16,8 +16,13 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       name: 'appName',
-      message: 'What is the name of this app?',
-      default: "test"
+      message: 'What is the name of this app?'
+    }, {
+      type: 'list',
+      name: 'bootstrap',
+      message: 'Do you want bootstrap or material?',
+      choices: ['bootstrap', 'material'],
+      default: 'bootstrap'
     }, {
       type: 'confirm',
       name: 'e2e',
@@ -35,7 +40,8 @@ module.exports = yeoman.generators.Base.extend({
       this.props = props;
 
       context = {
-        appname: props.appName
+        appname: props.appName,
+        bootstrap: props.bootstrap == 'bootstrap'
       };
 
       done();
@@ -57,13 +63,15 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
       this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
       this.fs.copy(this.templatePath('protractor.conf.js'), this.destinationPath('protractor.conf.js'));
-      // this.fs.copy(this.templatePath('bowerrc'), this.destinationPath('.bowerrc'));
+
     },
 
     tests: function () {
+
       if (this.props.e2e) {
         this.directory(this.templatePath('e2e'), this.destinationPath('e2e'));
       }
+
     },
 
     gulp: function () {
@@ -88,6 +96,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     src: function () {
+
       this.fs.copyTpl(this.templatePath('src/_index.html'), this.destinationPath('src/index.html'), context);
       this.fs.copyTpl(this.templatePath('src/app/App.js'), this.destinationPath('src/app/App.js'), context);
 
@@ -96,18 +105,43 @@ module.exports = yeoman.generators.Base.extend({
       this.directory(this.templatePath('src/app/header'), this.destinationPath('src/app/header'));
       this.directory(this.templatePath('src/app/footer'), this.destinationPath('src/app/footer'));
       this.directory(this.templatePath('src/app/home'), this.destinationPath('src/app/home'));
+
     },
 
     styles: function () {
-      this.directory(this.templatePath('src/styles'), this.destinationPath('src/styles'));
+
+      this.fs.copy(this.templatePath('src/styles/_base.scss'), this.destinationPath('src/styles/_base.scss'));
+      this.fs.copy(this.templatePath('src/styles/_config.scss'), this.destinationPath('src/styles/_config.scss'));
+      this.fs.copy(this.templatePath('src/styles/_footer.scss'), this.destinationPath('src/styles/_footer.scss'));
+      this.fs.copy(this.templatePath('src/styles/_header.scss'), this.destinationPath('src/styles/_header.scss'));
+      this.fs.copy(this.templatePath('src/styles/_reset.scss'), this.destinationPath('src/styles/_reset.scss'));
+
+      if (!context.bootstrap) {
+          this.fs.copy(this.templatePath('src/styles/_icons.scss'), this.destinationPath('src/styles/_icons.scss'));
+      }
+
+      this.fs.copyTpl(this.templatePath('src/styles/main.scss'), this.destinationPath('src/styles/main.scss'), context);
+
     },
 
     fonts: function () {
-      this.directory(this.templatePath('src/fonts'), this.destinationPath('src/fonts'));
+
+      if (context.bootstrap) {
+        this.fs.copy(this.templatePath('src/fonts/readme'), this.destinationPath('src/fonts/readme'));
+      } else {
+        this.fs.copy(this.templatePath('src/fonts/MaterialIcons-Regular.eot'), this.destinationPath('src/fonts/MaterialIcons-Regular.eot'));
+        this.fs.copy(this.templatePath('src/fonts/MaterialIcons-Regular.ijmap'), this.destinationPath('src/fonts/MaterialIcons-Regular.ijmap'));
+        this.fs.copy(this.templatePath('src/fonts/MaterialIcons-Regular.ttf'), this.destinationPath('src/fonts/MaterialIcons-Regular.ttf'));
+        this.fs.copy(this.templatePath('src/fonts/MaterialIcons-Regular.woff'), this.destinationPath('src/fonts/MaterialIcons-Regular.woff'));
+        this.fs.copy(this.templatePath('src/fonts/MaterialIcons-Regular.woff2'), this.destinationPath('src/fonts/MaterialIcons-Regular.woff2'));
+      }
+
     },
 
     images: function () {
+
       this.directory(this.templatePath('src/images'), this.destinationPath('src/images'));
+
     }
   },
 
