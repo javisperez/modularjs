@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~2.*",
     "angular": "~1.4.*",
+    "angular-menu": "*",
     "angular-animate": "~1.*",
     "angular-touch": "~1.*",
     "angular-cookies": "~1.*",

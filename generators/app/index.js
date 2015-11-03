@@ -11,7 +11,8 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the gnarly ' + chalk.red('Modularjs') + ' generator!'
+      'Welcome to the gnarly ' + chalk.yellow('ModularJS') + ' generator!' +
+      '\nPlease notice that this generator '+chalk.red('won\'t create a container folder,')+' so, files will be created on the cwd.'
     ));
 
     var prompts = [{
@@ -146,6 +147,39 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    this.installDependencies();
+    var done = this.async();
+
+    this.prompt({
+        type: 'confirm',
+        default: true,
+        message: 'Do you want me to install the dependencies for you? (if failed, please try again with SUDO)',
+        name: 'installDependencies'
+    }, function (props) {
+        if (props.installDependencies) {
+            this.installDependencies();
+        } else {
+            this.log(
+                chalk.bold.red('IMPORTANT: ')+'You choosed to install your dependencies manually, so run '+chalk.yellow('`npm install && bower install`')+' to do so.'
+            );
+        }
+
+        done();
+    }.bind(this));
+  },
+
+  end: function () {
+
+    var top = this;
+
+    this.on('end', function () {
+        top.log(
+            '\n'+
+            chalk.bold.green('We\'re done!') + ' everything was great!\n' +
+            'Now, to run a development server with this app run '+chalk.yellow('`gulp serve`')+'.\n'+
+            '\n'+
+            'To generate a new empty module run the subgenerator '+chalk.yellow('yo modularjs:module')+ '\n'+
+            'it will ask you what you want to use and generate the new folder structure for a blank module.'
+        );
+    });
   }
 });
