@@ -44,6 +44,16 @@ Also, will ask if you want to be able to run E2E tests and/or Unit tests
 Please note: If you say YES to the latest two questions (E2E or Unit Tests), then the Gulp rules for E2E and Unit Testing in Angular will be added
 
 
+### Sub generators
+
+Do you want to generate a new module? easy, use our sub generator:
+
+```bash
+yo modularjs:module
+```
+
+It will ask you for the name of the new module and a few more questions, just answer what you need
+
 ## About Yeoman
 
 ### What is Yeoman?
