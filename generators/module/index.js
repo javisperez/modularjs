@@ -1,11 +1,11 @@
 'use strict';
 
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
-var _ = require('lodash');
-var path = require('path');
-var wiring = require("html-wiring");
+var yeoman  = require('yeoman-generator');
+var chalk   = require('chalk');
+var yosay   = require('yosay');
+var _       = require('lodash');
+var path    = require('path');
+var wiring  = require("html-wiring");
 var appPath = null;
 var context = null;
 
@@ -168,8 +168,8 @@ module.exports = yeoman.generators.Base.extend({
         var done       = this.async();
 
         this.prompt({
-            type: 'confirm',
-            name: 'addToApp',
+            type:    'confirm',
+            name:    'addToApp',
             message: 'Do you want me to add the new module to the App.js as dependency?',
             default: true
         }, function (answer) {
@@ -185,7 +185,7 @@ module.exports = yeoman.generators.Base.extend({
 
                 this.log('I\'ve added the new module as dependency in your App.js file for you. Enjoy now!');
             } else {
-                this.log('You should add:'+'\n\this\''+context.camelCaseName+'\'\n'+'In the file: '+chalk.yellow('src/app/App.js')+', as a dependency');
+                this.log('You should add:'+'\n\t\''+context.camelCaseName+'\'\n'+'In the file: '+chalk.yellow('src/app/App.js')+', as a dependency');
             }
 
             done();

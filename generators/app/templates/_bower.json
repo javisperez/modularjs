@@ -10,6 +10,7 @@
     "angular-cookies": "~1.*",
     "angular-sanitize": "~1.*",
     "angular-resource": "~1.*",
+    "angular-menu": "*",
     "angular-route": "~1.*",
     <% if (bootstrap) { %>
     "bootstrap-sass-official": "~3.*",

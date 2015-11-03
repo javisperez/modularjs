@@ -25,4 +25,4 @@ angular.module('<%= camelCaseName %>', [])
             controller: '<%= studlyName %>Controller'
         });
 
-    };
+    });

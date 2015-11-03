@@ -9,7 +9,7 @@
 
 angular.module('<%= camelCaseName %>')
 
-    .controller('<%= camelCaseName %>Controller', function ($scope) {
+    .controller('<%= studlyName %>Controller', function ($scope) {
 
 
 
