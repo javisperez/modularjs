@@ -12,11 +12,11 @@
     "angular-resource": "~1.*",
     "angular-menu": "*",
     "angular-route": "~1.*",
-    <% if (bootstrap) { %>
+    <% if (uiFramework == 'bootstrap') { %>
     "bootstrap-sass-official": "~3.*",
     "angular-bootstrap": "*",
     "font-awesome": "~4.4.x",
-    <% } else { %>
+    <% } else if (uiFramework == 'Material'){ %>
     "angular-material": "1.*",
     <% } %>
     "toastr": "*",

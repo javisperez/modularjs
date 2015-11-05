@@ -10,7 +10,7 @@ angular.module('<%= _.camelCase(appname) %>', [
     'ngResource',
     'ngRoute',
     'ngMenu',
-    <% if (bootstrap) { %>'ui.bootstrap',<% } else { %>'ngMaterial',<% } %>
+    <% if (uiFramework == 'Bootstrap') { %>'ui.bootstrap',<% } else if (uiFramework == 'Material') { %>'ngMaterial',<% } %>
     'toastr',
     'angular-loading-bar',
 
