@@ -20,7 +20,7 @@ module.exports = yeoman.generators.Base.extend({
       message: 'What is the name of this app?'
     }, {
       type: 'list',
-      name: 'bootstrap',
+      name: 'uiFramework',
       message: 'Which UI framework do you want?',
       choices: ['Bootstrap', 'Material', 'None'],
       default: 'Bootstrap'
@@ -42,7 +42,7 @@ module.exports = yeoman.generators.Base.extend({
 
       context = {
         appname: props.appName,
-        uiFramework: props.bootstrap
+        uiFramework: props.uiFramework
       };
 
       done();
